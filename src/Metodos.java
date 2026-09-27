@@ -12,8 +12,7 @@ public class Metodos {
             o.setTurno(m.ValidarTurno(cola));
 
             System.out.println("Ingrese el número de identificación del cliente:");
-            o.getIdentificacion();
-            sc.next();
+            o.setIdentificacion(sc.next());
 
             System.out.println("Ingrese el nombre del cliente:");
             o.setNombre(sc.nextLine());
@@ -75,6 +74,30 @@ public class Metodos {
         System.out.println("Usuario atendido exitosamente.");
         return cola;
     }
+
+    public void BuscarClientePorId(Queue<ObjBanco> cola, Scanner sc) {
+    System.out.println("Ingrese el número de identificación a buscar:");
+    String buscado = sc.next();
+    boolean encontrado = false;
+
+    for (ObjBanco o : cola) {
+        if (o.getIdentificacion().equals(buscado)) {
+            System.out.println("\n--- CLIENTE ENCONTRADO ---");
+            System.out.println("Turno: " + o.getTurno());
+            System.out.println("Nombre: " + o.getNombre());
+            System.out.println("Trámite: " + Tramites(o.getTipoTramite()));
+            System.out.println("Estado: " + (o.getEstado() == 1 ? "Pendiente" : "Atendido"));
+            System.out.println("---------------------------\n");
+            encontrado = true;
+            break; 
+        }
+    }
+
+    if (!encontrado) {
+        System.out.println("El cliente con identificación " + buscado + " no se encuentra registrado aún.\n");
+    }
+}
+
 
     public int ValidarTurno(Queue<ObjBanco> cola) {
         int turno = 0;
