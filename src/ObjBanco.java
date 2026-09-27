@@ -1,22 +1,32 @@
 public class ObjBanco {
 
+    private int Turno;
     private String Identificacion;
     private String Nombre;
-    private String TipoTramite;
+    private int TipoTramite;
     private int Edad;
-    private String CondicionAt;
-    private int Turno;
+    private int CondicionAt;
+    private int Estado;
 
     public ObjBanco() {
 
     }
 
-    public ObjBanco(String identificacion, String nombre, String tipoTramite, int edad, String condicionAt, int turno) {
+    public ObjBanco(int turno, String identificacion, String nombre, int tipoTramite, int edad, int condicionAt, int estado) {
+        Turno = turno;
         Identificacion = identificacion;
         Nombre = nombre;
         TipoTramite = tipoTramite;
         Edad = edad;
         CondicionAt = condicionAt;
+        Estado = estado;
+    }
+
+     public int getTurno() {
+        return Turno;
+    }
+
+    public void setTurno(int turno) {
         Turno = turno;
     }
 
@@ -36,11 +46,11 @@ public class ObjBanco {
         Nombre = nombre;
     }
 
-    public String getTipoTramite() {
+    public int getTipoTramite() {
         return TipoTramite;
     }
 
-    public void setTipoTramite(String tipoTramite) {
+    public void setTipoTramite(int tipoTramite) {
         TipoTramite = tipoTramite;
     }
 
@@ -52,20 +62,20 @@ public class ObjBanco {
         Edad = edad;
     }
 
-    public String getCondicionAt() {
+    public int getCondicionAt() {
         return CondicionAt;
     }
 
-    public void setCondicionAt(String condicionAt) {
+    public void setCondicionAt(int condicionAt) {
         CondicionAt = condicionAt;
     }
 
-    public int getTurno() {
-        return Turno;
+    public int getEstado() {
+        return Estado;
     }
 
-    public void setTurno(int turno) {
-        Turno = turno;
+    public void setEstado(int estado) {
+        Estado = estado;
     }
 
     
