@@ -27,6 +27,13 @@ public class Metodos {
             o.setCondicionAt(m.CondicionesAtencion(sc));
 
             o.setEstado(1);
+            int opt = sc.nextInt();
+            System.out.println("Desea agregar mas trámites/turnos 1. SI \n 2. NO");
+            if (opt == 2) {
+                System.out.println("Vuelve pronto");
+                continuar = false;
+            }
+            cola.offer(o);
         }
 
         return cola;
@@ -76,27 +83,46 @@ public class Metodos {
     }
 
     public void BuscarClientePorId(Queue<ObjBanco> cola, Scanner sc) {
-    System.out.println("Ingrese el número de identificación a buscar:");
-    String buscado = sc.next();
-    boolean encontrado = false;
+        System.out.println("Ingrese el número de identificación a buscar:");
+        String buscado = sc.next();
+        boolean encontrado = false;
 
-    for (ObjBanco o : cola) {
-        if (o.getIdentificacion().equals(buscado)) {
-            System.out.println("\n--- CLIENTE ENCONTRADO ---");
-            System.out.println("Turno: " + o.getTurno());
-            System.out.println("Nombre: " + o.getNombre());
-            System.out.println("Trámite: " + Tramites(o.getTipoTramite()));
-            System.out.println("Estado: " + (o.getEstado() == 1 ? "Pendiente" : "Atendido"));
-            System.out.println("---------------------------\n");
-            encontrado = true;
-            break; 
+        for (ObjBanco o : cola) {
+            if (o.getIdentificacion().equals(buscado)) {
+                System.out.println("\n--- CLIENTE ENCONTRADO ---");
+                System.out.println("Turno: " + o.getTurno());
+                System.out.println("Nombre: " + o.getNombre());
+                System.out.println("Trámite: " + Tramites(o.getTipoTramite()));
+                System.out.println("Estado: " + (o.getEstado() == 1 ? "Pendiente" : "Atendido"));
+                System.out.println("---------------------------\n");
+                encontrado = true;
+                break; 
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("El cliente con identificación " + buscado + " no se encuentra registrado aún.\n");
         }
     }
 
-    if (!encontrado) {
-        System.out.println("El cliente con identificación " + buscado + " no se encuentra registrado aún.\n");
-    }
-}
+    /* public Queue<ObjBanco> CambiarAtencion(Queue<ObjBanco> cola, Scanner sc){
+
+        boolean continuar = true;
+        
+        while(continuar){
+            System.out.println("¿Desea cambiar el tipo de atención a preferencial? 1. SI\n 2. NO");
+            int opt = sc.nextInt();
+            if (opt == 2) {
+                System.out.println("No se realiza el cambio de atención. Tipo de atención: NORMAL");
+                continuar = false;
+            }else{
+
+            }
+
+        }
+        
+        return cola;
+    } */
 
 
     public int ValidarTurno(Queue<ObjBanco> cola) {
